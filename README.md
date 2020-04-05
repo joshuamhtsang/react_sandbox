@@ -8,9 +8,12 @@ Personal React sandbox.
     $ sudo npm install -g npx
     $ npx create-react-app react_sandbox
     $ cd react_sandbox
+    $ npm start
 
-'Create React App' automatically makes a .gitignore.  You can then
-add to your Git repo:
+'Create React App' automatically makes a .gitignore.  The actions
+of 'npm start' are determined inside package.json ("scripts" -> "start").
+
+Use the following steps to add this project to a Git repo:
 
 - First, make a repo called 'react_sandbox' in your Github account.
 - git init
