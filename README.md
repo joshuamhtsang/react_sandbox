@@ -1,6 +1,40 @@
 # react_sandbox
 Personal React sandbox.
 
+# Steps to create this project
+
+'Create React App' was used to create this project.
+
+    $ sudo npm install -g npx
+    $ npx create-react-app react_sandbox
+    $ cd react_sandbox
+
+'Create React App' automatically makes a .gitignore.  You can then
+add to your Git repo:
+
+- First, make a repo called 'react_sandbox' in your Github account.
+- git init
+- git add .gitignore README.md package.json public/ src/
+- git commit -m "And there was light..."
+- git remote add origin git@github.com:joshuamhtsang/react_sandbox.git
+- git branch --set-upstream-to=origin/master master
+- git pull origin master --allow-unrelated-histories
+- Solve the merge conflicts in README.md...
+- git add README.md 
+- git commit -m "fix merge conflict"
+- git push
+
+
+
+
+
+
+
+
+
+
+
+# Create React App Stuff
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
