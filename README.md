@@ -29,6 +29,10 @@ Use the following steps to add this project to a Git repo:
 
 # Development environment setup
 
+In Visual Studio Code, you can use 'split' terminals to have one run
+'npm start' which live updates the changes you are making while you
+code.
+
 ![alt text](./dev_env_setup.png)
 
 
