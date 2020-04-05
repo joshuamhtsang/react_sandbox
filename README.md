@@ -27,7 +27,9 @@ Use the following steps to add this project to a Git repo:
 - git commit -m "fix merge conflict"
 - git push
 
+# Development environment setup
 
+![alt text](./dev_env_setup.png)
 
 
 
