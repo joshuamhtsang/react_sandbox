@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Inventory from './components/inventory';
+import Inventory from './components/Inventory';
 
 class App extends Component {
   render() {
