@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Inventory from './components/Inventory';
+import Item from './components/Item';
 
 class App extends Component {
   render() {
@@ -15,7 +16,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <p>Josh was here.</p>
-        <Inventory items="Katana"/>
+        <Inventory items="Katana"> <Item name="Sabre" type="Weapon"/> </Inventory>
       </div>
     );
   }

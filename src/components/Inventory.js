@@ -2,7 +2,10 @@ import React from 'react';
 
 let inventory = (props) => {
     return (
-        <div> Inventory: {props.items} </div>
+        <div> 
+            <p> Inventory: {props.items} </p>
+            <p> {props.children} </p>
+        </div>
     )
 }
 
