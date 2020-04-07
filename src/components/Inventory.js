@@ -1,8 +1,8 @@
 import React from 'react';
 
-let inventory = () => {
+let inventory = (props) => {
     return (
-        <div> Inventory List: </div>
+        <div> Inventory: {props.items} </div>
     )
 }
 

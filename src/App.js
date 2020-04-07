@@ -15,8 +15,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <p>Josh was here.</p>
-        <p>Yup</p>
-        <Inventory />
+        <Inventory items="Katana"/>
       </div>
     );
   }
