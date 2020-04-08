@@ -5,6 +5,11 @@ import Inventory from './components/Inventory';
 import Item from './components/Item';
 
 class App extends Component {
+  state = {
+    characterName: "Ashenone",
+    characterLevel: "241"
+  }
+
   render() {
     return (
       <div className="App">
@@ -15,7 +20,8 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <p>Josh was here.</p>
+        <p>Character Name: {this.state.characterName}.</p>
+        <p>Character Level: {this.state.characterLevel}.</p>
         <Inventory items="Katana"> <Item name="Sabre" type="Weapon"/> </Inventory>
       </div>
     );
