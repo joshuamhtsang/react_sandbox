@@ -53,7 +53,7 @@ class App extends Component {
             name={sabre.name} 
             type={sabre.type} 
             slot={sabre.slot} 
-            onClick={this.equipItemHandler.bind(this, sabre.name, sabre.slot)}
+            onClick={() => this.equipItemHandler(sabre.name, sabre.slot)}
           />
 
           <Item name="Mana Potion" type="Usable" onClick={this.equipItemHandler.bind(this)}/>
