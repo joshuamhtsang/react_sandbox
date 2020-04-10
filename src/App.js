@@ -7,8 +7,20 @@ import Item from './components/Item';
 class App extends Component {
   state = {
     characterName: "Ashenone",
-    characterLevel: "241"
+    characterLevel: "241",
+    characterBaseHealth: 500,
+    characterBaseMana: 500,
+    gear: {
+      righthand: 'club',
+      lefthand: 'wooden shield',
+      armour: 'studded armour',
+      helmet: 'studded helmet',
+      legs: 'plate legs',
+      boots: 'leather boots'
+    }
   }
+
+
 
   render() {
     return (
@@ -22,7 +34,7 @@ class App extends Component {
         </p>
         <p>Character Name: {this.state.characterName}.</p>
         <p>Character Level: {this.state.characterLevel}.</p>
-        <Inventory items="Katana"> <Item name="Sabre" type="Weapon"/> </Inventory>
+        <Inventory> <Item name="Sabre" type="Weapon"/> <Item name="Mana Potion" type="Usable"/> </Inventory>
       </div>
     );
   }
