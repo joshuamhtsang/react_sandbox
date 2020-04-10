@@ -20,6 +20,16 @@ class App extends Component {
     }
   }
 
+  equipItemHandler = () => {
+    this.setState({
+      gear: {
+        ...this.state.gear,
+        righthand: 'name'
+      }
+    })
+
+    console.log(this.state)
+  }
 
 
   render() {
@@ -34,7 +44,10 @@ class App extends Component {
         </p>
         <p>Character Name: {this.state.characterName}.</p>
         <p>Character Level: {this.state.characterLevel}.</p>
-        <Inventory> <Item name="Sabre" type="Weapon"/> <Item name="Mana Potion" type="Usable"/> </Inventory>
+        <Inventory> 
+          <Item name="Sabre" type="Weapon" onClick={this.equipItemHandler}/> 
+          <Item name="Mana Potion" type="Usable" onClick={this.equipItemHandler}/> 
+        </Inventory>
       </div>
     );
   }

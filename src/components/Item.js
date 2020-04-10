@@ -1,20 +1,20 @@
 import React from 'react';
 
-let decide_button_text = (item_type) => {
+let decideButtonText = (itemType) => {
     let text = 'USE'
-    if (item_type === 'Weapon') {
+    if (itemType === 'Weapon') {
         text = 'EQUIP'
     }
     return text
 }
 
 let item = (props) => {
-    let use_button_text = decide_button_text(props.type)
+    let useButtonText = decideButtonText(props.type)
 
     return (
         <div>
             <div> Name: {props.name}, Type: {props.type}</div>
-            <button> {use_button_text} </button>
+            <button onClick={props.onClick}> {useButtonText} </button>
         </div>
     )
 }
