@@ -1,9 +1,11 @@
 import React from 'react';
 
+import './Inventory.css'
+
 let inventory = (props) => {
     return (
-        <div> 
-            <p> Inventory:</p>
+        <div className="Inventory"> 
+            <p> Inventory</p>
             <p> {props.children} </p>
         </div>
     )

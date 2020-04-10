@@ -6,7 +6,7 @@ import Item from './components/Item';
 
 const sabre = {
   name: "Sabre",
-  type: "weapon",
+  type: "Weapon",
   slot: "righthand"
 }
 
@@ -33,8 +33,6 @@ class App extends Component {
         [slot]: itemName
       }
     })
-
-    console.log(this.state)
   }
 
 
@@ -51,7 +49,12 @@ class App extends Component {
         <p>Character Name: {this.state.characterName}.</p>
         <p>Character Level: {this.state.characterLevel}.</p>
         <Inventory> 
-          <Item name={sabre.name} type={sabre.type} onClick={this.equipItemHandler.bind(this, sabre.name, sabre.slot)}/>
+          <Item 
+            name={sabre.name} 
+            type={sabre.type} 
+            slot={sabre.slot} 
+            onClick={this.equipItemHandler.bind(this, sabre.name, sabre.slot)}
+          />
 
           <Item name="Mana Potion" type="Usable" onClick={this.equipItemHandler.bind(this)}/>
         </Inventory>
