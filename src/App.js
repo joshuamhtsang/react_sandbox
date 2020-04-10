@@ -4,6 +4,12 @@ import './App.css';
 import Inventory from './components/Inventory';
 import Item from './components/Item';
 
+const sabre = {
+  name: "Sabre",
+  type: "weapon",
+  slot: "righthand"
+}
+
 class App extends Component {
   state = {
     characterName: "Ashenone",
@@ -20,11 +26,11 @@ class App extends Component {
     }
   }
 
-  equipItemHandler = () => {
+  equipItemHandler = (itemName, slot) => {
     this.setState({
       gear: {
         ...this.state.gear,
-        righthand: 'name'
+        [slot]: itemName
       }
     })
 
@@ -45,8 +51,9 @@ class App extends Component {
         <p>Character Name: {this.state.characterName}.</p>
         <p>Character Level: {this.state.characterLevel}.</p>
         <Inventory> 
-          <Item name="Sabre" type="Weapon" onClick={this.equipItemHandler}/> 
-          <Item name="Mana Potion" type="Usable" onClick={this.equipItemHandler}/> 
+          <Item name={sabre.name} type={sabre.type} onClick={this.equipItemHandler.bind(this, sabre.name, sabre.slot)}/>
+
+          <Item name="Mana Potion" type="Usable" onClick={this.equipItemHandler.bind(this)}/>
         </Inventory>
       </div>
     );

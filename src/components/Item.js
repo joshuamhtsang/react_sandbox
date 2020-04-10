@@ -13,7 +13,7 @@ let item = (props) => {
 
     return (
         <div>
-            <div> Name: {props.name}, Type: {props.type}</div>
+            <div> Name: {props.name}, Type: {props.type}, Slot: {props.slot}</div>
             <button onClick={props.onClick}> {useButtonText} </button>
         </div>
     )
