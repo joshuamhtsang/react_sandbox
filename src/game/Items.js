@@ -12,6 +12,10 @@ class Weapon {
     }
 }
 
-export let club = new Weapon('club', 10, 10);
+export const Weapons = {
+    'club': new Weapon('Club', 10, 10),
+    'sabre': new Weapon('Sabre', 12, 12)
+}
 
-console.log('defence:', club.defence)
+//export const club = new Weapon('club', 10, 10);
+//console.log('defence:', club.defence)
