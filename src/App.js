@@ -4,6 +4,10 @@ import './App.css';
 import Inventory from './components/Inventory';
 import Item from './components/Item';
 
+import {club as club} from './game/Items'
+
+console.log(club.attack)
+
 const sabre = {
   name: "Sabre",
   type: "Weapon",
