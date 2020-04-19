@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Inventory from './components/Inventory';
 import Item from './components/Item';
+import FillableBar from './components/FillableBar';
 
 import {Weapons as Weapons} from './game/Items'
 
@@ -20,6 +21,8 @@ class App extends Component {
     characterLevel: "241",
     characterBaseHealth: 500,
     characterBaseMana: 500,
+    characterHealth: 450,
+    characterMana: 400,
     gear: {
       righthand: 'club',
       lefthand: 'wooden shield',
@@ -52,6 +55,7 @@ class App extends Component {
         </p>
         <p>Character Name: {this.state.characterName}.</p>
         <p>Character Level: {this.state.characterLevel}.</p>
+        <FillableBar value={this.state.characterHealth} max={this.state.characterBaseHealth}/>
         <Inventory> 
           <Item 
             name={sabre.name} 
