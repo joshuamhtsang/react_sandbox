@@ -6,7 +6,7 @@ const FillableBar = (props) => {
     let percentage = props.value / props.max * 100;
     return (
       <div className="fillable-bar">
-        <Filler percentage={percentage} />
+        <Filler percentage={percentage} color={props.color}/>
       </div>
     )
 }
@@ -14,7 +14,7 @@ const FillableBar = (props) => {
 const Filler = (props) => {
     return (
         <div className="filler" 
-            style={{ background: `#ff0000`, width: `${props.percentage}%` }}>
+            style={{ background: `${props.color}`, width: `${props.percentage}%` }}>
         </div>
     )
 }

@@ -55,7 +55,16 @@ class App extends Component {
         </p>
         <p>Character Name: {this.state.characterName}.</p>
         <p>Character Level: {this.state.characterLevel}.</p>
-        <FillableBar value={this.state.characterHealth} max={this.state.characterBaseHealth}/>
+        <FillableBar 
+          value={this.state.characterHealth} 
+          max={this.state.characterBaseHealth}
+          color='#ff0000'
+        />
+        <FillableBar 
+          value={this.state.characterMana} 
+          max={this.state.characterBaseMana}
+          color='#3366ff'
+        />
         <Inventory> 
           <Item 
             name={sabre.name} 
