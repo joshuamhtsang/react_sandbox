@@ -5,14 +5,23 @@ import Inventory from './components/Inventory';
 import Item from './components/Item';
 import FillableBar from './components/FillableBar';
 
-import {Weapons as Weapons} from './game/Items'
+import {Weapons as Weapons} from './game/Items';
+import sabrePicture from './game/itemPictures/Sabre.gif';
+import manaPotionPicture from './game/itemPictures/Mana_Potion.gif';
 
 console.log("App:", Weapons['club'].attack)
 
 const sabre = {
   name: "Sabre",
   type: "Weapon",
-  slot: "righthand"
+  slot: "righthand",
+  picture: sabrePicture
+}
+
+const manaPotion = {
+  name: "Mana Potion",
+  type: "Usable",
+  picture: manaPotionPicture
 }
 
 class App extends Component {
@@ -75,15 +84,21 @@ class App extends Component {
           max={this.state.characterBaseMana}
           color='#3366ff'
         />
-        <Inventory> 
+        <Inventory>
           <Item 
             name={sabre.name} 
             type={sabre.type} 
             slot={sabre.slot} 
+            picture={sabre.picture}
             onClick={() => this.equipItemHandler(sabre.name, sabre.slot)}
           />
 
-          <Item name="Mana Potion" type="Usable" onClick={this.useManaPotionHandler.bind(this)}/>
+          <Item 
+            name={manaPotion.name}
+            type={manaPotion.type}
+            picture={manaPotion.picture}
+            onClick={this.useManaPotionHandler.bind(this)}
+          />
         </Inventory>
       </div>
     );
