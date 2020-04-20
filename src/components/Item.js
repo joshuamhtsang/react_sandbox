@@ -16,7 +16,8 @@ let item = (props) => {
     return (
         <div className='Item' onClick={props.onClick}>
             <img src={props.picture} className="ItemPicture"/>
-            <div> Name: {props.name}, Type: {props.type}, Slot: {props.slot}</div>
+            <div> Name: {props.name}, </div>
+            <div>Type: {props.type}, Slot: {props.slot}</div>
             <button onClick={props.onClick}> {useButtonText} </button>
         </div>
     )
