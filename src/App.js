@@ -42,6 +42,16 @@ class App extends Component {
     })
   }
 
+  useManaPotionHandler = () => {
+    let finalMana = this.state.characterMana + 50;
+    if (finalMana > this.state.characterBaseMana) {
+      finalMana = this.state.characterBaseMana
+    }
+    this.setState({
+      characterMana: finalMana
+    })
+  }
+
 
   render() {
     return (
@@ -73,7 +83,7 @@ class App extends Component {
             onClick={() => this.equipItemHandler(sabre.name, sabre.slot)}
           />
 
-          <Item name="Mana Potion" type="Usable" onClick={this.equipItemHandler.bind(this)}/>
+          <Item name="Mana Potion" type="Usable" onClick={this.useManaPotionHandler.bind(this)}/>
         </Inventory>
       </div>
     );

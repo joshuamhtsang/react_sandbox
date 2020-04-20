@@ -14,7 +14,7 @@ let item = (props) => {
     let useButtonText = decideButtonText(props.type)
 
     return (
-        <div className='Item'>
+        <div className='Item' onClick={props.onClick}>
             <div> Name: {props.name}, Type: {props.type}, Slot: {props.slot}</div>
             <button onClick={props.onClick}> {useButtonText} </button>
         </div>
