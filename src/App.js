@@ -5,24 +5,10 @@ import Inventory from './components/Inventory';
 import Item from './components/Item';
 import FillableBar from './components/FillableBar';
 
-import {Weapons as Weapons} from './game/Items';
-import sabrePicture from './game/itemPictures/Sabre.gif';
-import manaPotionPicture from './game/itemPictures/Mana_Potion.gif';
+import Weapons from './game/Weapons';
+import Items from './game/Items';
 
-console.log("App:", Weapons['club'].attack)
-
-const sabre = {
-  name: "Sabre",
-  type: "Weapon",
-  slot: "righthand",
-  picture: sabrePicture
-}
-
-const manaPotion = {
-  name: "Mana Potion",
-  type: "Usable",
-  picture: manaPotionPicture
-}
+console.log("App: ", Weapons['club'].attack)
 
 class App extends Component {
   state = {
@@ -46,7 +32,7 @@ class App extends Component {
     this.setState({
       gear: {
         ...this.state.gear,
-        [slot]: itemName
+        [[slot]]: itemName
       }
     })
   }
@@ -86,17 +72,17 @@ class App extends Component {
         />
         <Inventory>
           <Item 
-            name={sabre.name} 
-            type={sabre.type} 
-            slot={sabre.slot} 
-            picture={sabre.picture}
-            onClick={() => this.equipItemHandler(sabre.name, sabre.slot)}
+            name={Weapons['sabre'].name} 
+            type={Weapons['sabre'].type} 
+            slot={Weapons['sabre'].type} 
+            picture={Weapons['sabre'].picture}
+            onClick={() => this.equipItemHandler(Weapons['sabre'].name, Weapons['sabre'].slot)}
           />
 
           <Item 
-            name={manaPotion.name}
-            type={manaPotion.type}
-            picture={manaPotion.picture}
+            name={Items['mana potion'].name}
+            type={Items['mana potion'].type}
+            picture={Items['mana potion'].picture}
             onClick={this.useManaPotionHandler.bind(this)}
           />
         </Inventory>

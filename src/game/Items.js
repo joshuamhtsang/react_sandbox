@@ -1,21 +1,14 @@
+
 class Item {
-    name = 'dummy_name';
-}
-
-class Weapon {
-    constructor(name, attack, defence) {
+    constructor(name, picturePath) {
         this.name = name;
-        this.attack = attack;
-        this.defence = defence;
-
-        console.log(this.attack)
+        this.picturePath = picturePath;
     }
 }
 
-export const Weapons = {
-    'club': new Weapon('Club', 10, 10),
-    'sabre': new Weapon('Sabre', 12, 12)
-}
+let Items = {};
 
-//export const club = new Weapon('club', 10, 10);
-//console.log('defence:', club.defence)
+const mana_potion = new Item('Mana Potion', './itemPictures/Mana_Potion.gif');
+Items['mana potion'] = mana_potion
+
+export default Items;
