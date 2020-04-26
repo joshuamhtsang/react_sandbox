@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Inventory from './components/Inventory';
 import Item from './components/Item';
+import GearScreen from './components/GearScreen';
 import FillableBar from './components/FillableBar';
 
 import Weapons from './game/Weapons';
@@ -28,17 +29,18 @@ class App extends Component {
     }
   }
 
-  equipItemHandler = (itemName, slot) => {
-    this.setState({
-      gear: {
-        ...this.state.gear,
-        [[slot]]: itemName
-      }
-    })
-  }
+  // equipItemHandler = (itemName, slot) => {
+  //   this.setState({
+  //     gear: {
+  //       ...this.state.gear,
+  //       [[slot]]: itemName
+  //     }
+  //   })
+  // }
 
   useItemHandler = (itemObject) => {
     if (itemObject.action === 'alter_mana') {
+      let mana_change = itemObject.mana_change;
       let finalMana = this.state.characterMana + itemObject.mana_change;
       if (finalMana > this.state.characterBaseMana) {
         finalMana = this.state.characterBaseMana
@@ -46,11 +48,20 @@ class App extends Component {
       this.setState({
         characterMana: finalMana
       })
+    } else if (itemObject.action === 'equip') {
+      let slot = itemObject.slot;
+      console.log(this.state.gear);
+      this.setState({
+        gear: {
+          ...this.state.gear,
+          [slot]: itemObject.name
+        }
+      })
+      console.log(this.state.gear)
+    } else {
+      console.log("!!!ERROR!!! Unknown itemObject.action!");
     }
   }
-
-  // alterCharacterBaseHealthHandler = () => {
-  // }
 
 
   render() {
@@ -79,9 +90,9 @@ class App extends Component {
           <Item 
             name={Weapons['sabre'].name} 
             type={Weapons['sabre'].type} 
-            slot={Weapons['sabre'].type} 
+            slot={Weapons['sabre'].slot} 
             picture={Weapons['sabre'].picture}
-            onClick={() => this.equipItemHandler(Weapons['sabre'].name, Weapons['sabre'].slot)}
+            onClick={this.useItemHandler.bind(this, Weapons['sabre'])}
           />
 
           <Item 
@@ -98,6 +109,9 @@ class App extends Component {
             onClick={this.useItemHandler.bind(this, Items['ultimate mana potion'])}
           />
         </Inventory>
+        <GearScreen
+          gear={this.state.gear.righthand}
+        />
       </div>
     );
   }
