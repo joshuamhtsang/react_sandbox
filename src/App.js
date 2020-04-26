@@ -37,19 +37,9 @@ class App extends Component {
     })
   }
 
-  useManaPotionHandler = () => {
-    let finalMana = this.state.characterMana + 50;
-    if (finalMana > this.state.characterBaseMana) {
-      finalMana = this.state.characterBaseMana
-    }
-    this.setState({
-      characterMana: finalMana
-    })
-  }
-
   useItemHandler = (itemObject) => {
-    if (itemObject.action === 'replenish_mana') {
-      let finalMana = this.state.characterMana + 10;
+    if (itemObject.action === 'alter_mana') {
+      let finalMana = this.state.characterMana + itemObject.mana_change;
       if (finalMana > this.state.characterBaseMana) {
         finalMana = this.state.characterBaseMana
       }
@@ -98,7 +88,7 @@ class App extends Component {
             name={Items['mana potion'].name}
             type={Items['mana potion'].type}
             picture={Items['mana potion'].picture}
-            onClick={this.useManaPotionHandler.bind(this)}
+            onClick={this.useItemHandler.bind(this, Items['mana potion'])}
           />
 
           <Item 
