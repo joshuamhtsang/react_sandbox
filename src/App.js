@@ -49,7 +49,7 @@ class App extends Component {
 
   useItemHandler = (itemObject) => {
     if (itemObject.action === 'replenish_mana') {
-      let finalMana = this.state.characterMana + 50;
+      let finalMana = this.state.characterMana + 10;
       if (finalMana > this.state.characterBaseMana) {
         finalMana = this.state.characterBaseMana
       }
@@ -59,9 +59,8 @@ class App extends Component {
     }
   }
 
-  alterCharacterBaseHealthHandler = () => {
-    
-  }
+  // alterCharacterBaseHealthHandler = () => {
+  // }
 
 
   render() {
@@ -106,7 +105,7 @@ class App extends Component {
             name={Items['ultimate mana potion'].name}
             type={Items['ultimate mana potion'].type}
             picture={Items['ultimate mana potion'].picture}
-            onClick={this.useManaPotionHandler.bind(this)}
+            onClick={this.useItemHandler.bind(this, Items['ultimate mana potion'])}
           />
         </Inventory>
       </div>
