@@ -29,15 +29,6 @@ class App extends Component {
     }
   }
 
-  // equipItemHandler = (itemName, slot) => {
-  //   this.setState({
-  //     gear: {
-  //       ...this.state.gear,
-  //       [[slot]]: itemName
-  //     }
-  //   })
-  // }
-
   useItemHandler = (itemObject) => {
     if (itemObject.action === 'alter_mana') {
       let mana_change = itemObject.mana_change;
