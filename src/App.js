@@ -85,6 +85,13 @@ class App extends Component {
             picture={Items['mana potion'].picture}
             onClick={this.useManaPotionHandler.bind(this)}
           />
+
+          <Item 
+            name={Items['ultimate mana potion'].name}
+            type={Items['ultimate mana potion'].type}
+            picture={Items['ultimate mana potion'].picture}
+            onClick={this.useManaPotionHandler.bind(this)}
+          />
         </Inventory>
       </div>
     );
