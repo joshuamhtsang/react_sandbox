@@ -47,6 +47,22 @@ class App extends Component {
     })
   }
 
+  useItemHandler = (itemObject) => {
+    if (itemObject.action === 'replenish_mana') {
+      let finalMana = this.state.characterMana + 50;
+      if (finalMana > this.state.characterBaseMana) {
+        finalMana = this.state.characterBaseMana
+      }
+      this.setState({
+        characterMana: finalMana
+      })
+    }
+  }
+
+  alterCharacterBaseHealthHandler = () => {
+    
+  }
+
 
   render() {
     return (
