@@ -101,7 +101,7 @@ class App extends Component {
           />
         </Inventory>
         <GearScreen
-          gear={this.state.gear.righthand}
+          gear={this.state.gear}
         />
       </div>
     );

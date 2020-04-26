@@ -7,6 +7,7 @@ class Weapon {
         this.slot = slot;
         this.picturePath = picturePath;
         this.picture;
+        this.type = 'Weapon';
     }
 }
 

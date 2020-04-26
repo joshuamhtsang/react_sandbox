@@ -11,13 +11,14 @@ let decideButtonText = (itemType) => {
 }
 
 let item = (props) => {
-    let useButtonText = decideButtonText(props.type)
+    let useButtonText = decideButtonText(props.type);
 
     return (
         <div className='Item' onClick={props.onClick}>
             <img src={props.picture} className="ItemPicture"/>
-            <div> Name: {props.name}, </div>
-            <div>Type: {props.type}, Slot: {props.slot}</div>
+            <div> Name: {props.name} </div>
+            <div> Type: {props.type} </div>
+            {props.slot ? <div> Slot: {props.slot}  </div> : <div></div>}
             <button onClick={props.onClick}> {useButtonText} </button>
         </div>
     )
