@@ -50,7 +50,7 @@ class App extends Component {
   useItemHandler = (itemObject) => {
     if (itemObject.action === 'alter_mana') {
       let mana_change = itemObject.mana_change;
-      let finalMana = this.state.characterMana + itemObject.mana_change;
+      let finalMana = this.state.characterMana + mana_change;
       if (finalMana > this.state.characterBaseMana) {
         finalMana = this.state.characterBaseMana
       }
@@ -97,7 +97,7 @@ class App extends Component {
           color='#3366ff'
         />
         <Inventory>
-          {Object.keys(this.state.inventory).map(item => (
+          {Object.keys(this.state.inventory).map((item, i) => (
             <Item 
             name={Items[item].name} 
             type={Items[item].type}
