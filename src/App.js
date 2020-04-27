@@ -6,10 +6,7 @@ import Item from './components/Item';
 import GearScreen from './components/GearScreen';
 import FillableBar from './components/FillableBar';
 
-import Weapons from './game/Weapons';
 import Items from './game/Items';
-
-console.log("App: ", Weapons['club'].attack)
 
 class App extends Component {
   state = {
@@ -27,6 +24,11 @@ class App extends Component {
       legs: 'plate legs',
       boots: 'leather boots'
     },
+    inventory: {
+      'sabre': 1,
+      'mana potion': 10,
+      'ultimate mana potion': 5
+    },
     turn: 0
   }
 
@@ -37,7 +39,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.interval = setInterval(() => this.tick(), 1000);
+    this.interval = setInterval(() => this.tick(), 250);
   }
 
   componentWillUnmount() {
@@ -95,27 +97,14 @@ class App extends Component {
           color='#3366ff'
         />
         <Inventory>
-          <Item 
-            name={Weapons['sabre'].name} 
-            type={Weapons['sabre'].type} 
-            slot={Weapons['sabre'].slot} 
-            picture={Weapons['sabre'].picture}
-            onClick={this.useItemHandler.bind(this, Weapons['sabre'])}
-          />
-
-          <Item 
-            name={Items['mana potion'].name}
-            type={Items['mana potion'].type}
-            picture={Items['mana potion'].picture}
-            onClick={this.useItemHandler.bind(this, Items['mana potion'])}
-          />
-
-          <Item 
-            name={Items['ultimate mana potion'].name}
-            type={Items['ultimate mana potion'].type}
-            picture={Items['ultimate mana potion'].picture}
-            onClick={this.useItemHandler.bind(this, Items['ultimate mana potion'])}
-          />
+          {Object.keys(this.state.inventory).map(item => (
+            <Item 
+            name={Items[item].name} 
+            type={Items[item].type}
+            picture={Items[item].picture}
+            onClick={this.useItemHandler.bind(this, Items[item])}
+            />
+          ))}
         </Inventory>
         <GearScreen
           gear={this.state.gear}

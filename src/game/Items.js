@@ -8,7 +8,23 @@ class Item {
     }
 }
 
+class Weapon {
+    constructor(name, attack, defence, slot, picturePath) {
+        this.name = name;
+        this.attack = attack;
+        this.defence = defence;
+        this.slot = slot;
+        this.picturePath = picturePath;
+        this.picture;
+        this.type = 'Weapon';
+    }
+}
+
 let Items = {};
+
+///////////
+// Items //
+///////////
 
 const mana_potion = new Item(
     'Mana Potion', 
@@ -31,5 +47,15 @@ ultimate_mana_potion.picture = ultimateManaPotionPicture;
 ultimate_mana_potion.action = 'alter_mana';
 ultimate_mana_potion.mana_change = 200;
 Items['ultimate mana potion'] = ultimate_mana_potion;
+
+/////////////
+// Weapons //
+/////////////
+
+const sabre = new Weapon('Sabre', 12, 12, 'righthand', './itemPictures/Sabre.gif');
+import sabrePicture from './itemPictures/Sabre.gif';
+sabre.picture = sabrePicture;
+sabre.action = 'equip';
+Items['sabre'] = sabre;
 
 export default Items;
