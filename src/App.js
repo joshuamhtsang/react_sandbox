@@ -26,8 +26,24 @@ class App extends Component {
       helmet: 'studded helmet',
       legs: 'plate legs',
       boots: 'leather boots'
-    }
+    },
+    turn: 0
   }
+
+  tick = () => {
+    this.setState(state => ({
+      turn: state.turn + 1
+    }));
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => this.tick(), 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
 
   useItemHandler = (itemObject) => {
     if (itemObject.action === 'alter_mana') {
@@ -67,6 +83,7 @@ class App extends Component {
         </p>
         <p>Character Name: {this.state.characterName}.</p>
         <p>Character Level: {this.state.characterLevel}.</p>
+        <p> Turn: {this.state.turn} </p>
         <FillableBar 
           value={this.state.characterHealth} 
           max={this.state.characterBaseHealth}
