@@ -5,6 +5,7 @@ import Inventory from './components/Inventory';
 import Item from './components/Item';
 import GearScreen from './components/GearScreen';
 import FillableBar from './components/FillableBar';
+import DeathModal from './components/DeathModal';
 
 import Items from './game/Items';
 
@@ -30,7 +31,8 @@ class App extends Component {
       'ultimate mana potion': 5,
       'slime potion': 1
     },
-    turn: 0
+    turn: 0,
+    deathModal: false
   }
 
   tick = () => {
@@ -43,7 +45,17 @@ class App extends Component {
 
     if (alive === false) {
       console.log("You have died.")
+      console.log("showDeathModal = ", this.state.deathModal)
+      this.showDeathModal();
     }
+  }
+
+  showDeathModal = () => {
+    this.setState({ deathModal: true });
+  }
+
+  hideDeathModal = () => {
+    this.setState({ deathModal: false });
   }
 
   checkAlive = () => {
@@ -110,6 +122,9 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <DeathModal
+          show={this.state.deathModal}
+        />
         <p>Character Name: {this.state.characterName}.</p>
         <p>Character Level: {this.state.characterLevel}.</p>
         <p> Turn: {this.state.turn} </p>
