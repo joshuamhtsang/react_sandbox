@@ -9,6 +9,9 @@ import DeathModal from './components/DeathModal';
 
 import Items from './game/Items';
 
+const turnsPerActionPoint = 4;
+const maxActionPoints = 1;
+
 class App extends Component {
   state = {
     characterName: "Ashenone",
@@ -32,7 +35,7 @@ class App extends Component {
       'slime potion': 1
     },
     turn: 0,
-    actionPoints: 1,
+    actionPoints: maxActionPoints,
     deathModal: false
   }
 
@@ -50,9 +53,9 @@ class App extends Component {
       this.showDeathModal();
     }
 
-    if (this.state.turn % 4 === 0) {
+    if (this.state.turn % turnsPerActionPoint === 0) {
       this.setState(state => ({
-        actionPoints: state.actionPoints < 1 ? state.actionPoints + 1 : 1
+        actionPoints: state.actionPoints < maxActionPoints ? state.actionPoints + 1 : maxActionPoints
       }));
       console.log("actionPoints = ", this.state.actionPoints)
     }
