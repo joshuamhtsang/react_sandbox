@@ -8,7 +8,9 @@ const deathModal = (props) => {
 
     return (
         <div className={showHideClassName}> 
+            <section className="modal-main">
             Haha you died!
+            </section>
         </div>
     )
 }
