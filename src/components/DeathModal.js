@@ -9,7 +9,8 @@ const deathModal = (props) => {
     return (
         <div className={showHideClassName}> 
             <section className="modal-main">
-            Haha you died!
+            <p>Haha you died!</p>
+            <button onClick={props.onClick}> Accept </button>
             </section>
         </div>
     )

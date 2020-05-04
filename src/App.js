@@ -58,6 +58,18 @@ class App extends Component {
     this.setState({ deathModal: false });
   }
 
+  respawnCharacter = () => {
+    this.setState({ 
+      characterHealth: this.state.characterBaseHealth,
+      characterMana: this.state.characterBaseMana
+    });
+  }
+
+  acceptDeathHandler = () => {
+    this.hideDeathModal();
+    this.respawnCharacter();
+  }
+
   checkAlive = () => {
     return this.state.characterHealth > 0;
   }
@@ -124,6 +136,7 @@ class App extends Component {
         </p>
         <DeathModal
           show={this.state.deathModal}
+          onClick={this.acceptDeathHandler.bind(this)}
         />
         <p>Character Name: {this.state.characterName}.</p>
         <p>Character Level: {this.state.characterLevel}.</p>
