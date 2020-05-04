@@ -32,6 +32,7 @@ class App extends Component {
       'slime potion': 1
     },
     turn: 0,
+    actionPoints: 1,
     deathModal: false
   }
 
@@ -48,6 +49,14 @@ class App extends Component {
       console.log("showDeathModal = ", this.state.deathModal)
       this.showDeathModal();
     }
+
+    if (this.state.turn % 4 === 0) {
+      this.setState(state => ({
+        actionPoints: state.actionPoints < 1 ? state.actionPoints + 1 : 1
+      }));
+      console.log("actionPoints = ", this.state.actionPoints)
+    }
+    
   }
 
   showDeathModal = () => {
@@ -84,42 +93,50 @@ class App extends Component {
 
 
   useItemHandler = (itemObject) => {
-    if (itemObject.action === 'alter_mana') {
-      let mana_change = itemObject.mana_change;
-      let finalMana = this.state.characterMana + mana_change;
-      if (finalMana > this.state.characterBaseMana) {
-        finalMana = this.state.characterBaseMana;
-      }
-      if (finalMana < 0) {
-        finalMana = 0;
-      }
+    if (this.state.actionPoints > 0) {
       this.setState({
-        characterMana: finalMana
+        actionPoints: this.state.actionPoints - 1
       })
-    } if (itemObject.action === 'alter_health') {
-      let health_change = itemObject.health_change;
-      let finalHealth = this.state.characterHealth + health_change;
-      if (finalHealth > this.state.characterBaseHealth) {
-        finalHealth = this.state.characterBaseHealth
-      }
-      if (finalHealth < 0) {
-        finalHealth = 0;
-      }
-      this.setState({
-        characterHealth: finalHealth
-      })
-    } else if (itemObject.action === 'equip') {
-      let slot = itemObject.slot;
-      console.log(this.state.gear);
-      this.setState({
-        gear: {
-          ...this.state.gear,
-          [slot]: itemObject.name
+
+      if (itemObject.action === 'alter_mana') {
+        let mana_change = itemObject.mana_change;
+        let finalMana = this.state.characterMana + mana_change;
+        if (finalMana > this.state.characterBaseMana) {
+          finalMana = this.state.characterBaseMana;
         }
-      })
-      console.log(this.state.gear)
+        if (finalMana < 0) {
+          finalMana = 0;
+        }
+        this.setState({
+          characterMana: finalMana
+        })
+      } if (itemObject.action === 'alter_health') {
+        let health_change = itemObject.health_change;
+        let finalHealth = this.state.characterHealth + health_change;
+        if (finalHealth > this.state.characterBaseHealth) {
+          finalHealth = this.state.characterBaseHealth
+        }
+        if (finalHealth < 0) {
+          finalHealth = 0;
+        }
+        this.setState({
+          characterHealth: finalHealth
+        })
+      } else if (itemObject.action === 'equip') {
+        let slot = itemObject.slot;
+        console.log(this.state.gear);
+        this.setState({
+          gear: {
+            ...this.state.gear,
+            [slot]: itemObject.name
+          }
+        })
+        console.log(this.state.gear)
+      } else {
+        console.log("!!!ERROR!!! Unknown itemObject.action!");
+      }
     } else {
-      console.log("!!!ERROR!!! Unknown itemObject.action!");
+      console.log("Insufficient action points!")
     }
   }
 
