@@ -27,7 +27,8 @@ class App extends Component {
     inventory: {
       'sabre': 1,
       'mana potion': 10,
-      'ultimate mana potion': 5
+      'ultimate mana potion': 5,
+      'slime potion': 1
     },
     turn: 0
   }
@@ -36,6 +37,13 @@ class App extends Component {
     this.setState(state => ({
       turn: state.turn + 1
     }));
+
+    let alive = this.checkAlive();
+    console.log("alive = ", alive)
+  }
+
+  checkAlive = () => {
+    return this.state.characterHealth > 0;
   }
 
   componentDidMount() {
@@ -52,10 +60,25 @@ class App extends Component {
       let mana_change = itemObject.mana_change;
       let finalMana = this.state.characterMana + mana_change;
       if (finalMana > this.state.characterBaseMana) {
-        finalMana = this.state.characterBaseMana
+        finalMana = this.state.characterBaseMana;
+      }
+      if (finalMana < 0) {
+        finalMana = 0;
       }
       this.setState({
         characterMana: finalMana
+      })
+    } if (itemObject.action === 'alter_health') {
+      let health_change = itemObject.health_change;
+      let finalHealth = this.state.characterHealth + health_change;
+      if (finalHealth > this.state.characterBaseHealth) {
+        finalHealth = this.state.characterBaseHealth
+      }
+      if (finalHealth < 0) {
+        finalHealth = 0;
+      }
+      this.setState({
+        characterHealth: finalHealth
       })
     } else if (itemObject.action === 'equip') {
       let slot = itemObject.slot;
