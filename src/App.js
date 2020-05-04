@@ -39,7 +39,11 @@ class App extends Component {
     }));
 
     let alive = this.checkAlive();
-    console.log("alive = ", alive)
+    console.log("alive = ", alive);
+
+    if (alive === false) {
+      console.log("You have died.")
+    }
   }
 
   checkAlive = () => {
