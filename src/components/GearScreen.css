@@ -1,6 +1,6 @@
 .GearScreen{
-    border: 2px solid #cc6600;
-    background-color: #322d38;
+    border: 2px solid darkslategrey;
+    background-color: lightslategrey;
     width: 30%;
     float: right;
 }
