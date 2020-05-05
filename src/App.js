@@ -21,12 +21,12 @@ class App extends Component {
     characterHealth: 450,
     characterMana: 400,
     gear: {
-      righthand: 'club',
-      lefthand: 'wooden shield',
-      armour: 'studded armour',
-      helmet: 'studded helmet',
-      legs: 'plate legs',
-      boots: 'leather boots'
+      righthand: 'Club',
+      lefthand: 'Wooden Shield',
+      armour: 'Studded Armour',
+      helmet: 'Studded Helmet',
+      legs: 'Plate Legs',
+      boots: 'Leather Boots'
     },
     inventory: {
       'Sabre': 1,
