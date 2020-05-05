@@ -2,5 +2,9 @@
     border: 1px solid #0099ff;
     background-color: #0099ff;
     padding: 10px;
-    margin: 20px
+    margin: 20px;
+}
+
+.Item:hover{
+    background-color: darkcyan;
 }
