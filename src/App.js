@@ -104,13 +104,36 @@ class App extends Component {
 
       // Using an item consumes it, if it is consumable.
       if (itemObject.type === 'consumable') {
-        this.setState(prevState => ({
-            inventory: {
-              ...prevState.inventory,
-              [itemKey]: prevState.inventory[itemKey] - 1
-            }
-        })
-        )
+        // Check there is more than one item.
+        let numItems = this.state.inventory[itemKey];
+        if (numItems === 1) {
+          let newStateInventory = {
+            ...this.state.inventory
+          };
+
+          delete newStateInventory[itemKey];
+
+          this.setState(prevState => ({
+            inventory: newStateInventory
+          }));
+        } else {
+          // Consume one of the target items.
+          this.setState(prevState => ({
+              inventory: {
+                ...prevState.inventory,
+                [itemKey]: prevState.inventory[itemKey] - 1
+              }
+            })
+          );
+        }
+
+
+
+        if (this.state.inventory[itemKey] < 1 ) {
+          return false;
+        }
+
+        
       }
 
       if (itemObject.action === 'alter_mana') {
@@ -124,7 +147,7 @@ class App extends Component {
         }
         this.setState({
           characterMana: finalMana
-        })
+        });
       } if (itemObject.action === 'alter_health') {
         let health_change = itemObject.health_change;
         let finalHealth = this.state.characterHealth + health_change;
@@ -136,7 +159,7 @@ class App extends Component {
         }
         this.setState({
           characterHealth: finalHealth
-        })
+        });
       } else if (itemObject.action === 'equip') {
         let slot = itemObject.slot;
         console.log(this.state.gear);
@@ -145,7 +168,7 @@ class App extends Component {
             ...prevState.gear,
             [slot]: itemObject.name
           }
-        }))
+        }));
         console.log(this.state.gear)
       } else {
         console.log("!!!ERROR!!! Unknown itemObject.action!");
