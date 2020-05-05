@@ -126,14 +126,6 @@ class App extends Component {
             })
           );
         }
-
-
-
-        if (this.state.inventory[itemKey] < 1 ) {
-          return false;
-        }
-
-        
       }
 
       if (itemObject.action === 'alter_mana') {
