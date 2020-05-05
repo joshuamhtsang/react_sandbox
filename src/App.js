@@ -40,8 +40,8 @@ class App extends Component {
   }
 
   tick = () => {
-    this.setState(state => ({
-      turn: state.turn + 1
+    this.setState(prevState => ({
+      turn: prevState.turn + 1
     }));
 
     let alive = this.checkAlive();
@@ -54,8 +54,8 @@ class App extends Component {
     }
 
     if (this.state.turn % turnsPerActionPoint === 0) {
-      this.setState(state => ({
-        actionPoints: state.actionPoints < maxActionPoints ? state.actionPoints + 1 : maxActionPoints
+      this.setState(prevState => ({
+        actionPoints: prevState.actionPoints < maxActionPoints ? prevState.actionPoints + 1 : maxActionPoints
       }));
       console.log("actionPoints = ", this.state.actionPoints)
     }
@@ -97,9 +97,9 @@ class App extends Component {
 
   useItemHandler = (itemObject) => {
     if (this.state.actionPoints > 0) {
-      this.setState({
-        actionPoints: this.state.actionPoints - 1
-      })
+      this.setState(prevState => ({
+        actionPoints: prevState - 1
+      }))
 
       if (itemObject.action === 'alter_mana') {
         let mana_change = itemObject.mana_change;
@@ -128,12 +128,12 @@ class App extends Component {
       } else if (itemObject.action === 'equip') {
         let slot = itemObject.slot;
         console.log(this.state.gear);
-        this.setState({
+        this.setState(prevState => ({
           gear: {
-            ...this.state.gear,
+            ...prevState.gear,
             [slot]: itemObject.name
           }
-        })
+        }))
         console.log(this.state.gear)
       } else {
         console.log("!!!ERROR!!! Unknown itemObject.action!");
