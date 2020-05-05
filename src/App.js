@@ -29,10 +29,10 @@ class App extends Component {
       boots: 'leather boots'
     },
     inventory: {
-      'sabre': 1,
-      'mana potion': 10,
-      'ultimate mana potion': 5,
-      'slime potion': 1
+      'Sabre': 1,
+      'Mana Potion': 10,
+      'Ultimate Mana Potion': 5,
+      'Slime Potion': 1
     },
     turn: 0,
     actionPoints: maxActionPoints,
@@ -95,7 +95,7 @@ class App extends Component {
   }
 
 
-  useItemHandler = (itemObject, itemKey) => {
+  useItemHandler = (itemObject) => {
     if (this.state.actionPoints > 0) {
       // Using an item consumes an action point.
       this.setState(prevState => ({
@@ -105,23 +105,23 @@ class App extends Component {
       // Using an item consumes it, if it is consumable.
       if (itemObject.type === 'consumable') {
         // Check there is more than one item.
-        let numItems = this.state.inventory[itemKey];
+        let numItems = this.state.inventory[itemObject.name];
         if (numItems === 1) {
           let newStateInventory = {
             ...this.state.inventory
           };
 
-          delete newStateInventory[itemKey];
+          delete newStateInventory[itemObject.name];
 
-          this.setState(prevState => ({
+          this.setState({
             inventory: newStateInventory
-          }));
+          });
         } else {
           // Consume one of the target items.
           this.setState(prevState => ({
               inventory: {
                 ...prevState.inventory,
-                [itemKey]: prevState.inventory[itemKey] - 1
+                [itemObject.name]: prevState.inventory[itemObject.name] - 1
               }
             })
           );
