@@ -95,11 +95,23 @@ class App extends Component {
   }
 
 
-  useItemHandler = (itemObject) => {
+  useItemHandler = (itemObject, itemKey) => {
     if (this.state.actionPoints > 0) {
+      // Using an item consumes an action point.
       this.setState(prevState => ({
         actionPoints: prevState - 1
       }))
+
+      // Using an item consumes it, if it is consumable.
+      if (itemObject.type === 'consumable') {
+        this.setState(prevState => ({
+            inventory: {
+              ...prevState.inventory,
+              [itemKey]: prevState.inventory[itemKey] - 1
+            }
+        })
+        )
+      }
 
       if (itemObject.action === 'alter_mana') {
         let mana_change = itemObject.mana_change;
@@ -177,7 +189,8 @@ class App extends Component {
             name={Items[item].name} 
             type={Items[item].type}
             picture={Items[item].picture}
-            onClick={this.useItemHandler.bind(this, Items[item])}
+            amount={this.state.inventory[item]}
+            onClick={this.useItemHandler.bind(this, Items[item], item)}
             />
           ))}
         </Inventory>
